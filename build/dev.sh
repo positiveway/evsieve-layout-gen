@@ -12,6 +12,7 @@ sudo /home/user/CLionProjects/evsieve/target/release/evsieve --input /dev/input/
         --map key:z@dev_layout key:leftctrl key:z \
         --map key:y@dev_layout key:leftctrl key:y \
         --map key:f@dev_layout key:leftctrl key:f \
+        --map key:r@dev_layout key:leftalt key:tab \
         --map key:w@dev_layout key:leftctrl key:w \
         --map key:t@dev_layout key:leftctrl key:t \
         --map key:g@dev_layout key:leftshift key:f6 \

@@ -40,14 +40,17 @@ def layout_from_file(lines):
         if not line or line.startswith(';'):
             continue
 
-        keys = []
-        for ind, key in enumerate(line.split()):
-            key = key.strip()
-            if ind >= 1 and key in modifiers:
-                key = 'left' + key
-            key = 'key:' + key
-            keys.append(key)
-        layout[keys[0]] = keys[1:]
+        def gen_key(_key):
+            _key = _key.strip()
+            if _key in modifiers:
+                _key = 'left' + _key
+            _key = 'key:' + _key
+            return _key
+
+        orig_key, command = line.split()
+        orig_key = gen_key(orig_key)
+        command_keys = [gen_key(key) for key in command.split('+')]
+        layout[orig_key] = command_keys
 
     return layout
 
@@ -60,8 +63,8 @@ def read_layout(layout_name):
 
 def convert_to_args(layout):
     output_args = []
-    for orig_key, keys in layout.items():
-        output_arg = '--map ' + f'{orig_key}@dev_layout ' + ' '.join(keys) + ' \\'
+    for orig_key, command_keys in layout.items():
+        output_arg = '--map ' + f'{orig_key}@dev_layout ' + ' '.join(command_keys) + ' \\'
         output_args.append(output_arg)
     return output_args
 

@@ -6,6 +6,7 @@ a ctrl+a
 z ctrl+z
 y ctrl+y
 f ctrl+f
+s ctrl+s
 
 ;windows
 r alt+tab
@@ -15,7 +16,10 @@ w ctrl+w
 t ctrl+t
 
 ; pycharm
+4 ctrl+alt+b
+5 alt+shift+left
+space alt+enter
+slash ctrl+slash
 g shift+f6
 d ctrl+d
 l ctrl+alt+l
-b ctrl+alt+b

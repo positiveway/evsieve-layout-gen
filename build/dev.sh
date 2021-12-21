@@ -1,6 +1,7 @@
 #!/bin/sh
 
-sudo /home/user/CLionProjects/evsieve/target/release/evsieve --input /dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse grab \
+cd /home/user/CLionProjects/evsieve/target/release/ || { echo "Error changing directory"; exit 1; }
+sudo ./evsieve --input /dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mouse grab \
         --hook key:delete toggle \
         --block key:delete \
         --toggle "" @norm_layout @dev_layout \
@@ -19,7 +20,7 @@ sudo /home/user/CLionProjects/evsieve/target/release/evsieve --input /dev/input/
         --map key:t@dev_layout key:leftctrl key:t \
         --map key:4@dev_layout key:leftctrl key:leftalt key:b \
         --map key:5@dev_layout key:leftalt key:leftshift key:left \
-        --map key:space@dev_layout key:leftalt key:enter \
+        --map key:insert@dev_layout key:leftalt key:enter \
         --map key:slash@dev_layout key:leftctrl key:slash \
         --map key:g@dev_layout key:leftshift key:f6 \
         --map key:l@dev_layout key:leftctrl key:leftalt key:l \

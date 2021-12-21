@@ -76,35 +76,50 @@ def convert_to_args(layout):
 keyboard_id = ''
 
 
+def write_file(filename, content):
+    with open(filename, mode='w+', encoding='utf8') as file:
+        file.write(content)
+
+
 def write_layout(layout_name, lines):
-    with open(build_dir / (layout_name + '.sh'), mode='w+') as file:
-        file.write('\n'.join(lines))
+    write_file(build_dir / (layout_name + '.sh'), '\n'.join(lines))
 
 
 toggle_key = 'delete'
-exec_path = '/home/user/CLionProjects/evsieve/target/release/evsieve'
+exec_path = '/home/user/CLionProjects/evsieve/target/release/'
 device_id = 'usb-Logitech_USB_Receiver-if02-event-mouse'
+
+common_headers = [
+    '#!/bin/sh',
+    '',
+    f'cd {exec_path} || {{ echo "Error changing directory"; exit 1; }}',
+    f'sudo ./evsieve --input /dev/input/by-id/{device_id} ',
+]
+
+
+def gen_print_events():
+    print_headers = common_headers.copy()
+    print_headers[-1] = print_headers[-1] + '--print'
+    write_layout('print_events', print_headers)
 
 
 def convert_layout(raw_layout):
+    convert_headers = common_headers.copy()
+    convert_headers[-1] = convert_headers[-1] + 'grab \\'
+
     headers = [
-        '#!/bin/sh',
-        '',
-        f'sudo {exec_path} --input /dev/input/by-id/{device_id} grab \\',
         f'--hook key:{toggle_key} toggle \\',  # exec-shell=
         f'--block key:{toggle_key} \\',
         '--toggle "" @norm_layout @dev_layout \\',
     ]
-    ending = '--output'
+
+    ending = ['--output']
     output_args = convert_to_args(raw_layout)
 
-    output_args = headers + output_args
-    output_args.append(ending)
+    output_args = headers + output_args + ending
 
-    for ind, line in enumerate(output_args):
-        if ind > 2:
-            output_args[ind] = ' ' * len('evsieve ') + line
-
+    output_args = [' ' * len('evsieve ') + line for line in output_args]
+    output_args = convert_headers + output_args
     return output_args
 
 
@@ -121,3 +136,4 @@ def gen_layouts():
 
 if __name__ == '__main__':
     gen_layouts()
+    gen_print_events()

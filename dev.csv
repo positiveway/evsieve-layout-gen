@@ -7,6 +7,8 @@ z ctrl+z
 y ctrl+y
 f ctrl+f
 s ctrl+s
+;shift+semicolon semicolon
+;semicolon shift+semicolon
 
 ; mouse
 e btn:left
@@ -22,7 +24,7 @@ t ctrl+t
 ; pycharm
 4 ctrl+alt+b
 5 alt+shift+left
-space alt+enter
+insert alt+enter
 slash ctrl+slash
 g shift+f6
 ;d ctrl+d

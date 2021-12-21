@@ -8,6 +8,10 @@ y ctrl+y
 f ctrl+f
 s ctrl+s
 
+; mouse
+e btn:left
+d btn:middle
+
 ;windows
 r alt+tab
 
@@ -21,5 +25,5 @@ t ctrl+t
 space alt+enter
 slash ctrl+slash
 g shift+f6
-d ctrl+d
+;d ctrl+d
 l ctrl+alt+l

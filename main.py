@@ -40,11 +40,15 @@ def layout_from_file(lines):
         if not line or line.startswith(';'):
             continue
 
-        def gen_key(_key):
+        def gen_key(_key: str):
             _key = _key.strip()
+
             if _key in modifiers:
                 _key = 'left' + _key
-            _key = 'key:' + _key
+
+            if not (_key.startswith('rel') or _key.startswith('btn')):
+                _key = 'key:' + _key
+
             return _key
 
         orig_key, command = line.split()

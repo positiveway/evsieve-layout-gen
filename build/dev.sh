@@ -15,8 +15,8 @@ sudo ./evsieve --input /dev/input/by-id/usb-Logitech_USB_Receiver-if02-event-mou
         --map key:s@dev_layout key:leftctrl key:s \
         --map key:e@dev_layout btn:left \
         --map key:d@dev_layout btn:middle \
+        --map key:w@dev_layout btn:right \
         --map key:r@dev_layout key:leftalt key:tab \
-        --map key:w@dev_layout key:leftctrl key:w \
         --map key:t@dev_layout key:leftctrl key:t \
         --map key:4@dev_layout key:leftctrl key:leftalt key:b \
         --map key:5@dev_layout key:leftalt key:leftshift key:left \

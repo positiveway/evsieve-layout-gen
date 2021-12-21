@@ -13,12 +13,13 @@ s ctrl+s
 ; mouse
 e btn:left
 d btn:middle
+w btn:right
 
 ;windows
 r alt+tab
 
 ; chrome
-w ctrl+w
+;w ctrl+w
 t ctrl+t
 
 ; pycharm

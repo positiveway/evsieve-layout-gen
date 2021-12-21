@@ -77,8 +77,7 @@ def write_layout(layout_name, lines):
         file.write('\n'.join(lines))
 
 
-toggle_norm = 'insert'
-toggle_dev = 'delete'
+toggle_key = 'delete'
 exec_path = '/home/user/CLionProjects/evsieve/target/release/evsieve'
 device_id = 'usb-Logitech_USB_Receiver-if02-event-mouse'
 
@@ -88,9 +87,8 @@ def convert_layout(raw_layout):
         '#!/bin/sh',
         '',
         f'sudo {exec_path} --input /dev/input/by-id/{device_id} grab \\',
-        f'--hook key:{toggle_norm}  toggle=:1 \\',  # exec-shell=
-        f'--hook key:{toggle_dev}  toggle=:2 \\',
-        f'--block key:{toggle_norm} key:{toggle_dev} \\',
+        f'--hook key:{toggle_key} toggle \\',  # exec-shell=
+        f'--block key:{toggle_key} \\',
         '--toggle "" @norm_layout @dev_layout \\',
     ]
     ending = '--output'
